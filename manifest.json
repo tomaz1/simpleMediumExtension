@@ -1,10 +1,24 @@
 {
   "manifest_version": 3,
-  "name": "Goto Processed URL",
-  "version": "0.4.0",
-  "description": "On click, rewrite current tab URL and navigate in-place.",
+  "name": "Goto freedium.cfd URL - Tomaz",
+  "version": "0.4.5",
   "permissions": ["tabs", "storage"],
-  "action": { "default_title": "Process URL and go" },
   "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_title": "Process URL and go",
+    "default_icon": {
+      "16":  "icons/icon-16.png",
+      "32":  "icons/icon-32.png",
+      "48":  "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16":  "icons/icon-16.png",
+    "32":  "icons/icon-32.png",
+    "48":  "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
   "options_page": "options.html"
 }
+

@@ -34,7 +34,7 @@ function rewriteUrl(current, { defaultHost }) {
     const u = new URL(current);
     // primer tvoje logike:
     u.hostname = defaultHost;                         // prepiši host
-    u.pathname = "/" + current.replace(/^https?:\/\//, ""); // v path zapiši original
+    u.pathname = "/" + current; //current.replace(/^https?:\/\//, ""); // v path zapiši original
     return u.toString();
   } catch {
     return current;

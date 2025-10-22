@@ -3,45 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <title>Goto Processed URL – Options</title>
-    <style>
-      body { font: 14px system-ui, sans-serif; padding: 16px; }
-      label { display:block; margin: 8px 0 4px; }
-      input[type="text"] { width: 360px; padding: 6px; }
-      button { margin-top: 12px; padding: 6px 10px; }
-      .hint { color:#666; margin-top:6px; }
-      .ok { color: green; margin-left: 8px; }
-    </style>
+    <link rel="stylesheet" href="options.css">
   </head>
   <body>
     <h1>Nastavitve</h1>
+
     <label for="host">Default host (brez https://):</label>
     <input id="host" type="text" placeholder="freedium.cfd" />
-    <div class="hint">Primer: <code>freedium-mirror.cfd</code> ali <code>freedium.cfd</code></div>
-    <button id="save">Shrani</button><span id="status"></span>
 
-    <script>
-      const hostEl = document.getElementById('host');
-      const statusEl = document.getElementById('status');
+    <div class="hint">Primer: <code>freedium.cfd</code> ali <code>freedium-mirror.cfd</code></div>
+    <button id="save">Shrani</button><span id="status" aria-live="polite"></span>
 
-      function sanitizeHost(h) {
-        return (h || "").trim().replace(/^https?:\/\//i,"").replace(/\/+$/,"");
-      }
-
-      async function load() {
-        const { defaultHost } = await chrome.storage.local.get("defaultHost");
-        hostEl.value = defaultHost || "google.com";
-      }
-
-      async function save() {
-        const cleaned = sanitizeHost(hostEl.value);
-        await chrome.storage.local.set({ defaultHost: cleaned });
-        statusEl.textContent = '✔ shranjeno';
-        statusEl.className = 'ok';
-        setTimeout(() => { statusEl.textContent = ''; statusEl.className=''; }, 1200);
-      }
-
-      document.getElementById('save').addEventListener('click', save);
-      load();
-    </script>
+    <!-- Zunanja skripta (brez inline koda) -->
+    <script src="options.js"></script>
   </body>
 </html>
